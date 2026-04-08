@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\DistribuidoraAseo.props" />
-</Project>

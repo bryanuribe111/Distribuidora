@@ -1,11 +1,14 @@
 using DistribuidoraAseo.Data;
 using DistribuidoraAseo.DAO.Interfaces;
 using DistribuidoraAseo.DAO.Implementations;
+using DistribuidoraAseo.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
 builder.Services.AddControllers();
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<DatabaseConnection>();
 
@@ -21,14 +24,14 @@ builder.Services.AddScoped<ICompraDAO, CompraDAO>();
 builder.Services.AddScoped<IDetalleCompraDAO, DetalleCompraDAO>();
 builder.Services.AddScoped<IPreciosEspecialesDAO, PreciosEspecialesDAO>();
 
-builder.Services.AddOpenApi();
+builder.Services.AddScoped<PedidoService>();
 
 var app = builder.Build();
 
-// Swagger
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();

@@ -32,49 +32,49 @@ namespace DistribuidoraAseo.Services
 
         // CALCULAR TOTAL PEDIDO
         public decimal CalcularTotal(List<DetallePedido> detalles)
-{
-    decimal total = 0;
+        {
+            decimal total = 0;
 
-    foreach (var item in detalles)
-    {
-        var producto = _productoDAO.GetById(item.IdProducto);
+            foreach (var item in detalles)
+            {
+                var producto = _productoDAO.GetById(item.IdProducto);
 
-        if (producto == null)
-            throw new Exception("Producto no existe");
+                if (producto == null)
+                    throw new Exception("Producto no existe");
 
-        total += producto.Precio * item.Cantidad;
-    }
+                total += producto.PrecioBase * item.Cantidad;
+            }
 
-    return total;
-}
+            return total;
+        }
+
         // CREAR PEDIDO COMPLETO
         public void CrearPedido(Pedido pedido, List<DetallePedido> detalles)
         {
-            // Validar stock de cada producto
             foreach (var item in detalles)
             {
                 ValidarStock(item.IdProducto, item.Cantidad);
             }
 
-            // Calcular total
             decimal total = CalcularTotal(detalles);
 
-            // Guardar pedido
             _pedidoDAO.Insert(pedido);
 
-            // Guardar detalles y actualizar stock
             foreach (var item in detalles)
             {
                 _detalleDAO.Insert(item);
 
                 var producto = _productoDAO.GetById(item.IdProducto);
-                producto.Stock -= item.Cantidad;
 
+                if (producto == null)
+                    throw new Exception("Producto no existe");
+
+                producto.Stock -= item.Cantidad;
                 _productoDAO.Update(producto);
             }
         }
 
-        // ACTUALIZAR STOCK 
+        // ACTUALIZAR STOCK
         public void ActualizarStock(int idProducto, int cantidad)
         {
             var producto = _productoDAO.GetById(idProducto);
@@ -83,7 +83,6 @@ namespace DistribuidoraAseo.Services
                 throw new Exception("Producto no existe");
 
             producto.Stock += cantidad;
-
             _productoDAO.Update(producto);
         }
     }

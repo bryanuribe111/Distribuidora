@@ -5,3 +5,4 @@ obj/
 *.cache
 *.dll
 *.exe
+Services/PedidoService.cs

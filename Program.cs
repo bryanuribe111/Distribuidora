@@ -1,7 +1,10 @@
+using DistribuidoraAseo.Services;
+using DistribuidoraAseo.Services.Interfaces;
+
 using DistribuidoraAseo.Data;
 using DistribuidoraAseo.DAO.Interfaces;
 using DistribuidoraAseo.DAO.Implementations;
-using DistribuidoraAseo.Services;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +28,9 @@ builder.Services.AddScoped<IDetalleCompraDAO, DetalleCompraDAO>();
 builder.Services.AddScoped<IPreciosEspecialesDAO, PreciosEspecialesDAO>();
 
 builder.Services.AddScoped<PedidoService>();
+
+
+builder.Services.AddScoped<IPedidoService, PedidoService>();
 
 var app = builder.Build();
 

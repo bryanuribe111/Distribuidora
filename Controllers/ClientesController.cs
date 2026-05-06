@@ -39,7 +39,8 @@ namespace DistribuidoraAseo.Controllers
                 return BadRequest("Datos inválidos");
 
             _clienteDAO.Insert(cliente);
-            return Ok("Cliente creado correctamente");
+
+            return CreatedAtAction(nameof(GetById), new { id = cliente.IdCliente }, cliente);
         }
 
         [HttpPut("{id}")]
@@ -65,6 +66,7 @@ namespace DistribuidoraAseo.Controllers
                 return NotFound("Cliente no encontrado");
 
             _clienteDAO.Delete(id);
+
             return Ok("Cliente eliminado correctamente");
         }
     }

@@ -1,5 +1,9 @@
 CREATE DATABASE distribuidora_aseo;
+<<<<<<< HEAD
 USE distribuidora_aseo;
+=======
+USE DistribuidoraDB;
+>>>>>>> a4eebaf (Proyecto backend funcional con integración completa)
 
 CREATE TABLE rol (
     id_rol INT  PRIMARY KEY,

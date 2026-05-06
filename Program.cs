@@ -26,7 +26,11 @@ builder.Services.AddScoped<IClienteDAO, ClienteDAOEF>();
 
 builder.Services.AddScoped<IRolDAO, RolDAO>();
 builder.Services.AddScoped<IUsuarioDAO, UsuarioDAO>();
+<<<<<<< HEAD
 builder.Services.AddScoped<IProductoDAO, ProductoDAO>();
+=======
+builder.Services.AddScoped<IProductoDAO, ProductoDAOEF>();
+>>>>>>> a4eebaf (Proyecto backend funcional con integración completa)
 builder.Services.AddScoped<IMaterialDAO, MaterialDAO>();
 builder.Services.AddScoped<IComposicionProductoDAO, ComposicionProductoDAO>();
 builder.Services.AddScoped<IPedidoDAO, PedidoDAO>();

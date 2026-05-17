@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distribuidora de Aseo</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header class="header">
+        <div>
+            <h1>Distribuidora de Aseo</h1>
+            <p>Sistema de gestión de productos, clientes y pedidos</p>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <a href="#inicio">Inicio</a>
+        <a href="#productos">Productos</a>
+        <a href="#clientes">Clientes</a>
+        <a href="#pedidos">Pedidos</a>
+    </nav>
+
+    <main class="container">
+
+        <section id="inicio" class="card">
+            <h2>Panel principal</h2>
+            <p>
+                Bienvenido al sistema de la Distribuidora de Aseo. 
+                Desde esta interfaz se podrá consultar, registrar, editar y organizar
+                la información principal del negocio.
+            </p>
+
+            <div class="dashboard">
+                <div class="box">
+                    <h3>Productos</h3>
+                    <p>Gestión del inventario y precios.</p>
+                </div>
+
+                <div class="box">
+                    <h3>Clientes</h3>
+                    <p>Registro y consulta de clientes.</p>
+                </div>
+
+                <div class="box">
+                    <h3>Pedidos</h3>
+                    <p>Control de pedidos y detalles.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="productos" class="card">
+            <h2>Gestión de productos</h2>
+
+            <form class="formulario">
+                <div class="campo">
+                    <label>Nombre del producto</label>
+                    <input type="text" placeholder="Ej: Jabón líquido">
+                </div>
+
+                <div class="campo">
+                    <label>Precio</label>
+                    <input type="number" placeholder="Ej: 15000">
+                </div>
+
+                <div class="campo">
+                    <label>Stock</label>
+                    <input type="number" placeholder="Ej: 20">
+                </div>
+
+                <button type="button">Guardar producto</button>
+            </form>
+
+            <h3>Listado de productos</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Detergente</td>
+                        <td>$12.000</td>
+                        <td>30</td>
+                        <td>
+                            <button class="btn-editar">Editar</button>
+                            <button class="btn-eliminar">Eliminar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Cloro</td>
+                        <td>$8.000</td>
+                        <td>15</td>
+                        <td>
+                            <button class="btn-editar">Editar</button>
+                            <button class="btn-eliminar">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="clientes" class="card">
+            <h2>Gestión de clientes</h2>
+
+            <form class="formulario">
+                <div class="campo">
+                    <label>Nombre</label>
+                    <input type="text" placeholder="Nombre del cliente">
+                </div>
+
+                <div class="campo">
+                    <label>Teléfono</label>
+                    <input type="text" placeholder="Número de contacto">
+                </div>
+
+                <div class="campo">
+                    <label>Dirección</label>
+                    <input type="text" placeholder="Dirección del cliente">
+                </div>
+
+                <button type="button">Guardar cliente</button>
+            </form>
+        </section>
+
+        <section id="pedidos" class="card">
+            <h2>Gestión de pedidos</h2>
+
+            <form class="formulario">
+                <div class="campo">
+                    <label>ID Cliente</label>
+                    <input type="number" placeholder="Ej: 1">
+                </div>
+
+                <div class="campo">
+                    <label>ID Producto</label>
+                    <input type="number" placeholder="Ej: 2">
+                </div>
+
+                <div class="campo">
+                    <label>Cantidad</label>
+                    <input type="number" placeholder="Ej: 5">
+                </div>
+
+                <button type="button">Registrar pedido</button>
+            </form>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>Distribuidora de Aseo - Frontend del sistema</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

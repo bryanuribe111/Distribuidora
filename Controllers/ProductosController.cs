@@ -44,7 +44,7 @@ namespace DistribuidoraAseo.Controllers
         }
 
         [HttpPut("{id}")]
-<<<<<<< HEAD
+
         public IActionResult Update(int id, [FromBody] Producto producto)
         {
             if (producto == null)
@@ -60,22 +60,6 @@ namespace DistribuidoraAseo.Controllers
 
             return Ok(new { mensaje = "Producto actualizado correctamente" });
         }
-=======
-public IActionResult Update(int id, Producto producto)
-{
-    if (id != producto.IdProducto)
-        return BadRequest("ID no coincide");
-
-    var existente = _productoDAO.GetById(id);
-
-    if (existente == null)
-        return NotFound();
-
-    _productoDAO.Update(producto);
-
-    return Ok();
-}
->>>>>>> a4eebaf (Proyecto backend funcional con integración completa)
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)

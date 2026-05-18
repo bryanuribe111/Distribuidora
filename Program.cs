@@ -8,6 +8,17 @@ using DistribuidoraAseo.DAO.Implementations;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("PermitirFrontend",
+        policy =>
+        {
+            policy.AllowAnyOrigin()
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+});
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<DatabaseConnection>(); 
@@ -31,6 +42,8 @@ builder.Services.AddScoped<IPreciosEspecialesDAO, PreciosEspecialesDAO>();
 builder.Services.AddScoped<IPedidoService, PedidoService>();
 
 var app = builder.Build();
+
+app.UseCors("PermitirFrontend");
 
 app.UseDefaultFiles();
 app.UseStaticFiles();
